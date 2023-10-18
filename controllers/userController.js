@@ -56,9 +56,44 @@ module.exports = {
       if (!user) {
         return res.status(404).json({ message: "No user with this ID found" });
       }
-      res.json({ message: "User successfully deleted" });
+      await Thought.deleteMany({ _id: { $in: user.thoughts } });
+      res.json({ message: "User successfully deleted and all user thoughts" });
     } catch (err) {
       res.json(500).json(err);
+    }
+  },
+
+  // add a new friend to a user's friend list
+  async addFriend(req, res) {
+    try {
+      const user = await User.findOneAndUpdate(
+        { _id: req.params.userId },
+        { $addToSet: { friends: req.params.friendId } },
+        { new: true }
+      );
+      if (!user) {
+        return res.status(404).json({ message: "No user with this id" });
+      }
+      res.json("Friend added!");
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
+
+  async deleteFriend(req, res) {
+    try {
+      const user = await User.findOneAndUpdate(
+        { _id: req.params.userId },
+        { $pull: { friends: req.params.friendId } },
+        { new: true }
+      );
+
+      if (!user) {
+        return res.status(404).json({ message: "No user with this id" });
+      }
+      res.json("Friend removed!");
+    } catch (err) {
+      res.status(500).json(err);
     }
   },
 };
