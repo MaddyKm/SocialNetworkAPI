@@ -89,7 +89,7 @@ module.exports = {
       if (!user) {
         return res.status(404).json({ message: "No user with this ID found" });
       }
-      res.json({ message: "Friend added!" });
+      res.json({ message: "Friend deleted!" });
     } catch (err) {
       res.json(500).json(err);
     }
