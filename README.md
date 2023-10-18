@@ -21,7 +21,7 @@ Node must be installed, as well as mongoose, and express which are available as 
 
 ## Usage
 
-Initiate the app with `node server` in the command line. A link to video walkthrough is here:
+Initiate the app with `node server` in the command line. A link to video walkthrough is here: https://drive.google.com/file/d/1vXbsRA8P-naABdchhJ1I7VrJA1fw-8uD/view
 
 ## License
 
