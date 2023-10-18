@@ -19,8 +19,8 @@ const userSchema = new Schema(
         message: "Please enter a valid email",
       },
     },
-    thoughts: [Thought],
-    friends: {},
+    thoughts: [{ type: Schema.Types.ObjectId, ref: "Thought" }],
+    friends: [{ type: Schema.Types.ObjectId, ref: "User" }],
   },
   {
     toJSON: {
