@@ -1,11 +1,7 @@
 const { Schema, model } = require("mongoose");
-
+const Thought = require("./Thought");
 const userSchema = new Schema(
   {
-    userId: {
-      type: Schema.Types.ObjectId,
-      default: () => new Types.ObjectId(),
-    },
     username: {
       type: String,
       required: true,
@@ -23,7 +19,7 @@ const userSchema = new Schema(
         message: "Please enter a valid email",
       },
     },
-    thoughts: [thoughtSchema],
+    thoughts: [Thought],
     friends: {},
   },
   {
